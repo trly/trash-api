@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Trash Bin API
+  description: A simple API for generating random trash bin data
+  version: 1.0.0
+  contact:
+    name: API Support
+    url: https://example.com/support
+servers:
+  - url: http://localhost:8080
+    description: Development server
+
+paths:
+  /trash-bins:
+    get:
+      summary: Get a random trash bin
+      description: Returns a single randomly generated trash bin
+      operationId: getRandomTrashBin
+      responses:
+        '200':
+          description: A random trash bin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrashBin'
+        '500':
+          description: Internal server error
+
+  /trash-bins/random:
+    get:
+      summary: Get multiple random trash bins
+      description: Returns multiple randomly generated trash bins
+      operationId: getRandomTrashBins
+      parameters:
+        - name: count
+          in: query
+          description: Number of trash bins to generate (1-100)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 1
+            example: 5
+      responses:
+        '200':
+          description: An array of random trash bins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrashBin'
+        '400':
+          description: Bad request - invalid count parameter
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Count must be between 1 and 100"
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    TrashBin:
+      type: object
+      required:
+        - shape
+        - type
+        - volume
+        - color
+      properties:
+        shape:
+          $ref: '#/components/schemas/Shape'
+        type:
+          $ref: '#/components/schemas/Type'
+        volume:
+          type: number
+          format: double
+          description: Volume of the trash bin in liters
+          example: 50.5
+        color:
+          $ref: '#/components/schemas/Color'
+      example:
+        shape: CYLINDER
+        type: HOUSEHOLD
+        volume: 50.5
+        color: GREEN
+
+    Shape:
+      type: string
+      enum:
+        - CYLINDER
+        - RECTANGULAR
+        - SQUARE
+      description: The shape of the trash bin
+      example: CYLINDER
+
+    Type:
+      type: string
+      enum:
+        - HOUSEHOLD
+        - COMMERCIAL
+        - DUMPSTER
+      description: The type/category of the trash bin
+      example: HOUSEHOLD
+
+    Color:
+      type: string
+      enum:
+        - GREEN
+        - BLUE
+        - BROWN
+        - BLACK
+      description: The color of the trash bin
+      example: GREEN
