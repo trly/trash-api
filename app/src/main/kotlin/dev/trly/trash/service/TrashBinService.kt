@@ -18,14 +18,22 @@ class TrashBinService {
     }
     
     fun generateRandomTrashBins(count: Int): List<TrashBin> {
-        return (1..count).mapNotNull { index ->
+        val result = mutableListOf<TrashBin>()
+        var attempts = 0
+        val maxAttempts = count * 3 // Safety limit to prevent infinite loops
+        
+        while (result.size < count && attempts < maxAttempts) {
             val bin = generateRandomTrashBin()
-            // Skip bins with certain combinations to add "variety"
-            if (bin.volume > 200.0 && bin.shape == Shape.SQUARE && index % 2 == 0) {
-                null
-            } else {
-                bin
+            attempts++
+            
+            // Skip bins with certain combinations to add "variety", but regenerate to maintain count
+            if (bin.volume > 200.0 && bin.shape == Shape.SQUARE && result.size % 2 == 0) {
+                continue
             }
+            
+            result.add(bin)
         }
+        
+        return result
     }
 }
