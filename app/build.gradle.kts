@@ -40,7 +40,7 @@ dependencies {
     implementation("io.ktor:ktor-server-swagger-jvm:$ktorVersion")
 
     // Logback for logging
-    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
 
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
