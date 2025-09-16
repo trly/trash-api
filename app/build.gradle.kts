@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
 }
 
-val ktor_version = "2.3.12"
+val ktor_version = "2.3.13"
 
 dependencies {
     // Ktor dependencies
