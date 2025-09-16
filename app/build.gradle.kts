@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
 
     // Apply the Kotlin serialization plugin
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "2.2.20"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
