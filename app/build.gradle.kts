@@ -14,6 +14,9 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    
+    // Apply Spotless for code formatting
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 repositories {
@@ -64,4 +67,26 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+// Configure Spotless for code formatting
+spotless {
+    kotlin {
+        ktlint()
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    kotlinGradle {
+        ktlint()
+    }
+}
+
+// Configure fat jar generation
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = application.mainClass
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
