@@ -7,20 +7,27 @@ data class TrashBin(
     val shape: Shape,
     val type: Type,
     val volume: Double,
-    val color: Color
+    val color: Color,
 )
 
 @Serializable
 enum class Shape {
-    CYLINDER, RECTANGULAR, SQUARE
+    CYLINDER,
+    RECTANGULAR,
+    SQUARE,
 }
 
 @Serializable
 enum class Type {
-    HOUSEHOLD, COMMERCIAL, DUMPSTER
+    HOUSEHOLD,
+    COMMERCIAL,
+    DUMPSTER,
 }
 
 @Serializable
 enum class Color {
-    GREEN, BLUE, BROWN, BLACK
+    GREEN,
+    BLUE,
+    BROWN,
+    BLACK,
 }
