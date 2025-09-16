@@ -8,13 +8,13 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.kotlin.jvm)
-    
+
     // Apply the Kotlin serialization plugin
     kotlin("plugin.serialization") version "1.9.10"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-    
+
     // Apply Spotless for code formatting
     id("com.diffplug.spotless") version "6.25.0"
 }
@@ -24,27 +24,27 @@ repositories {
     mavenCentral()
 }
 
-val ktor_version = "2.3.12"
+val ktorVersion = "2.3.12"
 
 dependencies {
     // Ktor dependencies
-    implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-call-logging-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-status-pages-jvm:$ktor_version")
-    
+    implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-server-call-logging-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-server-status-pages-jvm:$ktorVersion")
+
     // OpenAPI/Swagger dependencies
-    implementation("io.ktor:ktor-server-openapi:$ktor_version")
-    implementation("io.ktor:ktor-server-swagger-jvm:$ktor_version")
-    
+    implementation("io.ktor:ktor-server-openapi:$ktorVersion")
+    implementation("io.ktor:ktor-server-swagger-jvm:$ktorVersion")
+
     // Logback for logging
     implementation("ch.qos.logback:logback-classic:1.4.14")
-    
+
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
+    testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
 
     // Use the JUnit 5 integration.
     testImplementation(libs.junit.jupiter.engine)

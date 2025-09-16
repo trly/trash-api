@@ -7,16 +7,16 @@ import dev.trly.trash.model.Type
 import kotlin.random.Random
 
 class TrashBinService {
-    
     fun generateRandomTrashBin(): TrashBin {
         return TrashBin(
             shape = Shape.values().random(),
             type = Type.values().random(),
-            volume = Random.nextDouble(10.0, 1000.0), // Random volume between 10 and 1000 liters
-            color = Color.values().random()
+            // Random volume between 10 and 1000 liters
+            volume = Random.nextDouble(10.0, 1000.0),
+            color = Color.values().random(),
         )
     }
-    
+
     fun generateRandomTrashBins(count: Int): List<TrashBin> {
         return (1..count).map { index ->
             var bin = generateRandomTrashBin()
