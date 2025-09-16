@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
 
     // Apply the Kotlin serialization plugin
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "2.2.20"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
@@ -40,7 +40,7 @@ dependencies {
     implementation("io.ktor:ktor-server-swagger-jvm:$ktorVersion")
 
     // Logback for logging
-    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
 
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
